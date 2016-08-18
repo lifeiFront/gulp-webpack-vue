@@ -70,7 +70,7 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin()
   ])
 }*/
-//返回入口文件对象
+//返回入口文件对象，src/js目录下的所有js文件均为入口文件。
 function getEntry() {
     var jsPath = path.resolve(srcDir, 'js');
     var dirs = fs.readdirSync(jsPath);
