@@ -33,7 +33,7 @@ gulp.task("build:js", ['del'], function(callback) {
  */
 gulp.task("dev:js", ['del'], function(callback) {
     webpackConfig.output.chunkFilename = "async_[name].js"; //修改webpack配置文件
-    webpackConfig.devtool = 'cheap-module-eval-source-map';//开发环境建议
+    webpackConfig.devtool = 'eval-source-map';//开发环境建议
     var devWebpackConfig = Object.create(webpackConfig),
         devCompiler = webpack(devWebpackConfig);
     devCompiler.run(function(err, stats) {
