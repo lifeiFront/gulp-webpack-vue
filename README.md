@@ -12,3 +12,7 @@ gulp结合webpack构建工具，vue+vue-router自动化构建部署工作流<br>
 3、dist、rev目录是在执行构建任务时自动生成的，不是必须文件。<br>
 4、项目中ftp上传还有相关图片雪碧图类似的东西注释掉了。只是一个大概的用法，去掉注释也不可用，需要的自行根据项目需求进行更改。<br>
 5、项目中test.js入口文件中有关于按需异步加载模块js的写法。（不同的方式在我的为知笔记：“webpack打包工具 按需加载文件” 记录）<br>
+
+<br><br>参考：<br>
+https://segmentfault.com/a/1190000006178770<br>
+https://segmentfault.com/a/1190000003969465<br>
