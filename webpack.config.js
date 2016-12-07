@@ -86,3 +86,94 @@ function getEntry() {
     });
     return files;
 }
+/*参考资料*/
+// 用node的glob对象获取入口文件（仅做参考）
+// const glob = require('glob');
+// var files = glob.sync('./src/js/*/index.js');//nodejs中的文件路劲读取
+// var newEntries = files.reduce(function(memo, file) {
+//     var name = /.*\/(.*?)\/index\.js/.exec(file)[1];
+//     memo[name] = entry(name);
+//     return memo;
+// }, {});
+// config.entry = Object.assign({}, config.entry, newEntries);
+// /**
+//  * [entry description]
+//  * @param  {[type]} name [description]
+//  * @return {[type]}      [description]
+//  */
+// function entry(name) {
+//     return './src/js/' + name + '/index.js';
+// }
+
+// var webpack = require('webpack');
+// var BellOnBundlerErrorPlugin = require('bell-on-bundler-error-plugin');
+// module.exports = {
+// 	entry:{
+// 		index:['./src/index.js','./src/style.css'],//通过配置方式将index.js与style.css融合到生成的index.js文件中
+// 		a:'./src/a.js',
+// 		vendor:[
+// 		'react',
+// 		'react-dom'
+// 		]
+// 	},
+// 	output:{
+// 		path:'./dist/',
+// 		filename:'[name].js',
+// 		//webpack-dev-server 的打包结果是放在内存的，查看 dist/index.js 的内容实际上是没有改变的
+// 		publicPath: '/dist'// webpack-dev-server 启动目录是  `/`, `/dist` 目录是打包的目标目录相对于启动目录的路径
+// 	},
+// 	module:{
+// 		loaders:[{
+// 			test:/\.js$/,
+// 			exclude:/node_modules/,
+// 			loader:'babel',
+// 			query:{
+// 				presets:['es2015','stage-0','react']
+// 			}
+// 		},{
+// 			test:/\.css$/,
+// 			loader:"style-loader!css-loader"
+// 		}]
+// 	},
+// 	devServer: {
+// 	  hot: true,
+// 	  inline: true
+// 	},
+// 	plugins: [
+// 	   new BellOnBundlerErrorPlugin(),
+// 	   new webpack.HotModuleReplacementPlugin(),//此模块用于热加载，检测源代码变化，自动执行webpack打包命令，自动刷新页面（之前测试webpack服务自动刷新报错，就是因为没有引入此插件）
+// 	   new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= 可以添加hash值[hash].bundle.js*/"vendor.bundle.js",Infinity),//将业务代码与第三方代码分离插件
+// 	  ]
+// eslint: {//eslint代码检查规则
+//         configFile: './.eslintrc'
+//     }
+// };
+
+
+/**
+ * webpack 配置字段说明
+ */
+//webpack 的配置中主要的两个配置 key 是，entry 和 output。
+// {
+//     entry: [String | Array | Object], // 入口模块
+//     output: {
+//         path: String,      // 输出路径
+//         filename: String   // 输出名称或名称 pattern
+//         publicPath: String // 指定静态资源的位置
+//         ...                // 其他配置
+//     }
+// }
+
+
+// 上面的例子中都是打包出一个 index.js 文件，如果项目有多个页面，那么需要打包出多个文件，webpack 可以用对象的方式配置多个打包文件
+
+// {
+//   entry: {
+//     index: './src/index.js',
+//     a: './src/a.js'
+//   },
+//   output: {
+//     path: './dist/',
+//     filename: '[name].js' 
+//   }
+// }
