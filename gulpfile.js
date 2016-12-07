@@ -200,3 +200,14 @@ gulp.task('upload', function () {
   }))
   .pipe(gutil.noop())
 })*/
+
+/*参考资料*/
+//exports.style = style;//gulp中的任务定义可以通过这种方式，在gulpfile.js文件内部可以调用，在node窗口中无法调用
+// function handleError(err) {//错误处理函数
+//   if (err.message) {
+//     console.log(err.message)
+//   } else {
+//     console.log(err)
+//   }
+//   this.emit('end')
+// }
