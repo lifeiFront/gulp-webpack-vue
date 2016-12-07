@@ -16,9 +16,9 @@ var gulp = require('gulp'),
  */
 gulp.task("build:js", ['del'], function(callback) {
     webpackConfig.output.chunkFilename = "async_[name]-[chunkhash:8].js"; //修改webpack配置文件
-    webpackConfig.devtool = 'cheap-module-source-map';//生成环境建议
+    webpackConfig.devtool = 'cheap-module-source-map';//生产环境建议
     
-    var buildWebpackConfig = Object.create(webpackConfig),
+    var buildWebpackConfig = Object.create(webpackConfig),//深度克隆
         buildCompiler = webpack(buildWebpackConfig);
     buildCompiler.run(function(err, stats) {
         if (err) throw new gutil.PluginError("webpack:build-js", err);
