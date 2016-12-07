@@ -260,3 +260,36 @@ gulp.task('upload', function () {
 //   }
 //   this.emit('end')
 // }
+
+// 2.3.4 gulp 增量 build
+
+// 每次执行构建任务的时候，为了减少构建时间，可以采用增量构建的方式，在 Gulp 中，可以利用一些插件过滤 stream，找出其中修改过的文件。
+
+// gulp-changed
+
+// gulp-newer
+
+// 以 gulp-newer 为例:
+
+// function images() {
+//   var dest = 'build/img';
+//   return gulp.src(paths.images)
+//     .pipe(newer(dest))  // 找出新增加的图像
+//     .pipe(imagemin({optimizationLevel: 5}))
+//     .pipe(gulp.dest(dest));
+// }
+// 在某些情况过滤掉 stream 过后还需要还原原来的 stream ，比如文件 transform 过后还需要文件合并，这种时候可以利用一下这两个插件：
+
+// gulp-cached
+
+// gulp-remember
+
+// function scripts() {
+//   return gulp.src(scriptsGlob)
+//     .pipe(cache('scripts'))         // 和 newer 类似，过滤出改变了的 scripts
+//     .pipe(header('(function () {')) // 文件添加 header
+//     .pipe(footer('})();'))          // 文件添加 footer
+//     .pipe(remember('scripts'))      // 找出所有的 scripts
+//     .pipe(concat('app.js'))         // 将所有文件合并
+//     .pipe(gulp.dest('public/'))
+// }
