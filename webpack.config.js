@@ -60,15 +60,17 @@ module.exports = {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
+    new webpack.DefinePlugin({//上线后的devtool要配置为source-map,有时候为了性能考虑，一定要配置这个插件
       'process.env': {
         NODE_ENV: '"production"'
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false
-      }
+            warnings: false
+        },
+        sourceMap: true,//这里的soucemap 不能少，可以在线上生成soucemap文件，便于调试
+        mangle: true
     }),
     new webpack.optimize.OccurenceOrderPlugin()
   ])
