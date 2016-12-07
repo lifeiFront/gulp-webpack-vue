@@ -202,6 +202,55 @@ gulp.task('upload', function () {
 })*/
 
 /*参考资料*/
+/*静态资源文件的版本号替换如下方式而不是修改文件名：（http://blog.csdn.net/itpinpai/article/details/53011860）
+<link rel="stylesheet" href="/Public/css/lib/base.css?v=1478084239"/>  
+<link rel="stylesheet" href="/Public/css/lib/common.css?v=1478084239"/>  
+<script src="/Public/js/dist/jquery.js?v=a145s55d44d"></script>  
+<script src="/Public/js/requirejs/require.js?v=a145s55d44d"></script>
+*/
+// var rev = require('gulp-rev');
+// var revFormat = require('gulp-rev-format');
+// var revReplace = require('gulp-rev-replace');
+// var replace = require('gulp-replace');
+// // 生成版本号清单  
+// gulp.task('rev', function(){
+//     gulp.src(['pathReplace/assets/**/*.*'])  
+//       .pipe(rev())  
+//       .pipe(revFormat({ //为了方便后续处理方便用正则匹配
+//         prefix: '.',  
+//         suffix: '.cache',  
+//         lastExt: false  
+//       }))  
+//       .pipe(rev.manifest())  
+//       .pipe(gulp.dest("pathReplace/app/"));
+// });  
+  
+  
+// gulp.task('add-version',['rev'], function() {  
+//     var manifest = gulp.src(["pathReplace/app/rev-manifest.json"]);  
+//     function modifyUnreved(filename) {//filename是源文件名即rev-manifest.json中的key
+//       console.log(filename);
+//       return filename;  
+//     }  
+//     function modifyReved(filename) {//filename是处理后添加了后缀的名称  rev-manifest.json中的value
+//       console.log(filename);
+//       if (filename.indexOf('.cache') > -1) {  
+//         const _version = filename.match(/\.[\w]*\.cache/)[0].replace(/(\.|cache)*/g,"");  
+//         const _filename = filename.replace(/\.[\w]*\.cache/,"");  
+//         filename = _filename + "?v=" + _version;  
+//         return filename;  
+//       }  
+//       return filename;  
+//     }  
+//     gulp.src(['pathReplace/view/**/**.html'])   
+//       .pipe(replace(/(\.[a-z]+)\?(v=)?[^\'\"\&]*/g,"$1")) //此处的匹配，如果html中样式文件是xxx.css?data=999替换会有问题，?号后v=必须作为第一个参数
+//       .pipe(revReplace({//revReplace插件的各个参数 
+//       manifest: manifest,  
+//       modifyUnreved: modifyUnreved,  
+//       modifyReved: modifyReved  
+//     }))    
+//     .pipe(gulp.dest('./pathReplace/view/'));  
+// }); 
 //exports.style = style;//gulp中的任务定义可以通过这种方式，在gulpfile.js文件内部可以调用，在node窗口中无法调用
 // function handleError(err) {//错误处理函数
 //   if (err.message) {
