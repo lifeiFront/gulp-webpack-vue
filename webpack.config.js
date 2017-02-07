@@ -179,3 +179,14 @@ function getEntry() {
 //     filename: '[name].js' 
 //   }
 // }
+
+
+// 我的工程如下，然后我想将：http://react-china.org/t/webpack/1870/2
+// button下的index.jsx编译为当前目录下的index.js
+// 将grid下的index.jsx编译为当前目录下的index.js
+// 然后将他们公用的库，编译到demo下面的common.js
+// entry = {
+// "/demo/button": "demo/button/index.jsx"),
+// "/demo/grid": "demo/grid/index.jsx")
+// }
+// 然后输出的时候，就能建到指定目录下去了
